@@ -9,3 +9,9 @@ class TextTooLongExeption(ApplicationException):
     @property
     def message(self) -> str:
         return f'Text value exceeds maximum length of 255 characters: "{self.text[:225]}..."'
+    
+@dataclass(eq=True)
+class EmptyTextError(ApplicationException):
+    @property
+    def message(self) -> str:
+        return 'Text value cannot be empty'
