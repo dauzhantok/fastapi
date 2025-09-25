@@ -4,13 +4,12 @@ from domain.exceptions.messages import TextTooLongExeption, EmptyTextError
 
 @dataclass(frozen=True)
 class Text(BaseValueObject):
-    value: str
-
+    value: str 
     def validate(self):
         if not self.value:
             raise EmptyTextError(self.value)
         
-    def as_generic_type(self):
+    def as_generic_type(self)->str:
         return str(self.value)
 
     
@@ -22,5 +21,5 @@ class Title(BaseValueObject):
         if len(self.value)>255:
             raise TextTooLongExeption(self.value)
     
-    def as_generic_type(self):
+    def as_generic_type(self) -> str:
         return str(self.value)
